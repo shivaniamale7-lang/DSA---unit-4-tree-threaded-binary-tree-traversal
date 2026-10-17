@@ -1,0 +1,11 @@
+Algorithm: Threaded Binary Tree Traversal
+Start.
+Create an empty Threaded Binary Search Tree.
+Insert nodes into the tree while maintaining threads.
+Set the current pointer to the root node.
+Move to the leftmost node of the tree.
+Display the current node's data.
+If the right pointer is a thread, move to the inorder successor.
+Otherwise, move to the right child and then find its leftmost node.
+Repeat Steps 6–8 until the current pointer becomes NULL.
+Stop.
