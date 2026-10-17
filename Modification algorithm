@@ -1,0 +1,10 @@
+Start.
+Create a Threaded Binary Search Tree and insert nodes.
+Set predecessor and successor threads for each node.
+Display the predecessor and successor threads of every node.
+Find the rightmost node and perform reverse inorder traversal using threads.
+Find the leftmost node and perform inorder traversal using threads.
+Perform conventional BST inorder traversal.
+Display both traversal outputs.
+Compare the threaded and conventional traversal results.
+Stop.
