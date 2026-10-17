@@ -1,0 +1,117 @@
+#include <iostream>
+using namespace std;
+
+struct Node {
+int data;
+Node *left, *right;
+bool leftThread, rightThread;
+};
+
+Node* createNode(int value) {
+Node* newNode = new Node;
+newNode->data = value;
+newNode->left = nullptr;
+newNode->right = nullptr;
+newNode->leftThread = true;
+newNode->rightThread = true;
+return newNode;
+}
+
+Node* insert(Node* root, int value) {
+Node* ptr = root;
+Node* parent = nullptr;
+
+```
+while (ptr != nullptr) {
+    if (value == ptr->data) {
+        cout << "Duplicate values are not allowed.\n";
+        return root;
+    }
+
+    parent = ptr;
+
+    if (value < ptr->data) {
+        if (!ptr->leftThread)
+            ptr = ptr->left;
+        else
+            break;
+    } else {
+        if (!ptr->rightThread)
+            ptr = ptr->right;
+        else
+            break;
+    }
+}
+
+Node* newNode = createNode(value);
+
+if (parent == nullptr) {
+    root = newNode;
+} else if (value < parent->data) {
+    newNode->left = parent->left;
+    newNode->right = parent;
+    parent->leftThread = false;
+    parent->left = newNode;
+} else {
+    newNode->right = parent->right;
+    newNode->left = parent;
+    parent->rightThread = false;
+    parent->right = newNode;
+}
+
+return root;
+```
+
+}
+
+void inorder(Node* root) {
+if (root == nullptr) {
+cout << "Tree is empty.\n";
+return;
+}
+
+```
+Node* ptr = root;
+
+while (!ptr->leftThread)
+    ptr = ptr->left;
+
+while (ptr != nullptr) {
+    cout << ptr->data << " ";
+
+    if (ptr->rightThread) {
+        ptr = ptr->right;
+    } else {
+        ptr = ptr->right;
+
+        while (!ptr->leftThread)
+            ptr = ptr->left;
+    }
+}
+
+cout << endl;
+```
+
+}
+
+int main() {
+Node* root = nullptr;
+int n, value;
+
+```
+cout << "Enter number of nodes: ";
+cin >> n;
+
+cout << "Enter node values:\n";
+for (int i = 0; i < n; i++) {
+    cin >> value;
+    root = insert(root, value);
+}
+
+cout << "Inorder Traversal: ";
+inorder(root);
+
+return 0;
+```
+
+}
